@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>See Messages - Haambii</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="write-page">
+  <div class="chat-container">
+    <div class="chat-header">
+      <h2>Your Messages 📨</h2>
+      <button onclick="toggleTheme()" class="dark-mode-btn">🌙</button>
+    </div>
+
+    <div id="messageList" class="chat-messages" style="max-height:300px; overflow-y:auto;"></div>
+
+    <div class="btn-row">
+      <button onclick="goBack()">⬅ Back</button>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCRHMhz1vBXhsDztiQJOEb4LW16fR8jSy8",
+      authDomain: "saaniaa-chat-app.firebaseapp.com",
+      databaseURL: "https://saaniaa-chat-app-default-rtdb.firebaseio.com",
+      projectId: "saaniaa-chat-app",
+      storageBucket: "saaniaa-chat-app.appspot.com",
+      messagingSenderId: "772648580897",
+      appId: "1:772648580897:web:5227f0cd4fc24968f43060"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const currentUser = localStorage.getItem("currentUser");
+
+    const messageList = document.getElementById("messageList");
+    const messagesRef = ref(db, `messages/${currentUser}`);
+
+    onValue(messagesRef, (snapshot) => {
+      messageList.innerHTML = "";
+      const data = snapshot.val();
+      if (data) {
+        Object.values(data).forEach(msg => {
+          const p = document.createElement("p");
+          p.innerHTML = `<strong>${msg.from}:</strong> ${msg.text} <span class="timestamp">${msg.timestamp}</span>`;
+          messageList.appendChild(p);
+        });
+        messageList.scrollTop = messageList.scrollHeight;
+      } else {
+        messageList.innerHTML = `<p class="info">No messages yet 😶</p>`;
+      }
+    });
+
+    window.goBack = () => window.location.href = "user.html";
+    window.toggleTheme = () => document.body.classList.toggle("dark-mode");
+  </script>
+</body>
+</html>

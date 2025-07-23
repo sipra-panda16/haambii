@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Menu - Haambii</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="user-page fancy-bg">
+  <div class="container card user-card">
+    <h2 class="animated-text">Heyy <span id="userName"></span> 👋</h2>
+    <p class="subtitle">What do you want to do?</p>
+
+    <div class="btn-group">
+      <button class="glow-btn" onclick="goToWrite()">📝 Write Message</button>
+      <button class="glow-btn" onclick="goToSee()">📨 See Messages</button>
+    </div>
+  </div>
+
+  <script>
+    const currentUser = localStorage.getItem("currentUser");
+    document.getElementById("userName").innerText = currentUser || "User";
+
+    function goToWrite() {
+      window.location.href = "write.html";
+    }
+
+    function goToSee() {
+      window.location.href = "see.html";
+    }
+  </script>
+</body>
+</html>
+
+

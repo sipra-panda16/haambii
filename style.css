@@ -1,0 +1,305 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #8e406a, #d9eaff);
+  color: #333;
+}
+
+.container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+h1.logo {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff61a6;
+}
+
+select, textarea, button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  background: #ff61a6;
+  color: white;
+  font-weight: bold;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #e94d8b;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.chat-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  height: 400px;
+  overflow-y: auto;
+}
+
+.chat-container p {
+  background: #f0f0ff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  position: relative;
+}
+
+.timestamp {
+  float: right;
+  font-size: 0.75rem;
+  color: gray;
+  margin-left: 10px;
+}
+
+.info {
+  text-align: center;
+  color: gray;
+}
+
+/* your existing CSS... then add these at the bottom */
+
+body.dark {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+body.dark .chat-container {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
+body.dark textarea, body.dark button {
+  background-color: #2a2a2a;
+  color: #f5f5f5;
+  border: 1px solid #444;
+}
+
+
+/* Light and Dark mode */
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  transition: background 0.5s, color 0.5s;
+}
+
+.light-mode {
+  background: #fef6ff;
+  color: #333;
+}
+
+.dark-mode {
+  background: #1e1e2f;
+  color: #fefefe;
+}
+
+/* Welcome Page Styling */
+.index-page .welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+  text-align: center;
+  animation: fadeIn 1.2s ease-in;
+}
+
+.logo-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ff66c4;
+  text-shadow: 2px 2px 4px #aaa;
+  animation: floatUp 2s ease-in-out infinite alternate;
+}
+
+.welcome-text {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #6a5acd;
+  animation: pulse 1.5s infinite;
+}
+
+.card {
+  margin-top: 40px;
+  padding: 20px;
+  background: #fff0f6;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card select,
+.card button {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  background-color: #ffe0f0;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.card button:hover {
+  background-color: #ffbbdd;
+}
+
+.dark-mode .card {
+  background: #2d2d44;
+  color: #fff;
+}
+
+.dark-mode .card button {
+  background-color: #4b3b69;
+  color: white;
+}
+
+.dark-mode .card button:hover {
+  background-color: #6f4dbb;
+}
+
+.dark-mode-btn {
+  margin-top: 20px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: none;
+  background-color: #dddddd;
+  cursor: pointer;
+}
+
+.dark-mode .dark-mode-btn {
+  background-color: #444;
+  color: #fff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 1; }
+}
+
+/* Write Page Styling */
+.write-page {
+  background: linear-gradient(135deg, #ffe4ec, #d0bfff);
+  min-height: 100vh;
+  padding: 30px;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.4s;
+}
+
+.chat-container {
+  max-width: 600px;
+  margin: auto;
+  background: #fff8fe;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  animation: fadeIn 1s;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chat-header h2 {
+  font-size: 1.8rem;
+  color: #ff66b2;
+  text-shadow: 1px 1px #ffd5ec;
+  animation: pop 1s;
+}
+
+.input-section textarea {
+  width: 100%;
+  height: 100px;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 16px;
+  border: 2px solid #ffddee;
+  resize: none;
+  background: #fff0f6;
+  color: #333;
+  transition: border 0.3s ease;
+}
+
+.input-section textarea:focus {
+  outline: none;
+  border: 2px solid #ff66c4;
+}
+
+.btn-row {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.btn-row button {
+  padding: 10px 15px;
+  border: none;
+  background: linear-gradient(45deg, #ff9cee, #b28dff);
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s, background 0.4s;
+}
+
+.btn-row button:hover {
+  transform: scale(1.05);
+}
+
+.dark-mode .chat-container {
+  background: #2c2c3a;
+  color: white;
+}
+
+.dark-mode .input-section textarea {
+  background: #3d3d5b;
+  color: white;
+  border: 2px solid #666;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.9); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}

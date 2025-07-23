@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Write Message - Haambii</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="write-page">
+
+  <div class="chat-container">
+    <div class="chat-header">
+      <h2>Drop a message 💌</h2>
+      <button onclick="toggleTheme()" class="dark-mode-btn">🌙</button>
+    </div>
+
+    <div class="input-section">
+      <textarea id="messageInput" placeholder="Type something sweet..."></textarea>
+    </div>
+
+    <div class="btn-row">
+      <button onclick="sendMessage()">Send 📤</button>
+      <button onclick="goBack()">⬅ Back</button>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCRHMhz1vBXhsDztiQJOEb4LW16fR8jSy8",
+      authDomain: "saaniaa-chat-app.firebaseapp.com",
+      databaseURL: "https://saaniaa-chat-app-default-rtdb.firebaseio.com",
+      projectId: "saaniaa-chat-app",
+      storageBucket: "saaniaa-chat-app.appspot.com",
+      messagingSenderId: "772648580897",
+      appId: "1:772648580897:web:5227f0cd4fc24968f43060"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    window.sendMessage = () => {
+      const msg = document.getElementById("messageInput").value.trim();
+      const user = localStorage.getItem("currentUser");
+      const toUser = user === "Saaniaa" ? "Imbi" : "Saaniaa";
+
+      if (msg !== "") {
+        push(ref(db, `messages/${toUser}`), {
+          from: user,
+          text: msg,
+          timestamp: new Date().toLocaleString()
+        });
+        document.getElementById("messageInput").value = "";
+        alert("Message sent!");
+      }
+    };
+
+    window.goBack = () => window.location.href = "user.html";
+    window.toggleTheme = () => document.body.classList.toggle("dark-mode");
+  </script>
+</body>
+</html>
